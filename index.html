@@ -1,0 +1,87 @@
+ <!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de números aleatórios</title>
+    <link rel="stylesheet" href="/CSS/style.css">    
+</head>
+
+
+<body>
+    <div class= "container"> 
+        <h1 class="title_main">Gerador de números</h1>
+
+        <div class="input-group">
+
+        <div class="input-field">       
+            <label for="min">Número Minimo </label>
+            <input id="min" type="number"name="min" min="1">    
+        </div>
+        
+
+        <div class="input-field">
+        <label for="max">Número de Máximo </label>
+        <input id="max" type="number"name="max" min="1"> 
+       
+    </div>
+      
+
+    </div>
+ 
+   <button id="generate">Gerar</button>
+   <button id="clear">Limpar</button>
+   
+   <div id="result">
+       <span>00</span>
+   </div>
+    
+</div>
+
+<script>
+
+    const buttonGenerate = document.getElementById('generate');
+    const buttonClear = document.getElementById('clear');
+    const resultSpan = document.querySelector('#result > span');
+
+    buttonGenerate.addEventListener('click', function(){
+         const min = parseInt(document.getElementById('min').value);
+         const max= parseInt (document.getElementById('max').value);
+
+
+    if (isNaN(min) || isNaN(max)) {
+
+       alert(" Insira um valor válido. ");
+
+       return;
+
+   }
+
+   if (min > max){
+
+    alert ("O número mínimo não pode ser maior que o valor máximo");
+    return;
+
+   }
+   
+   let interval = setInterval(() => {
+                result.textContent = Math.floor(Math.random() * (max - min + 1)) + min;
+            }, 50);
+
+            setTimeout(() => {
+                clearInterval(interval);
+                result.textContent = Math.floor(Math.random() * (max - min + 1)) + min;
+            }, 2000);
+        });
+
+        clear.addEventListener('click', () => {
+            document.getElementById('min').value = '';
+            document.getElementById('max').value = '';
+            result.textContent = '00';
+        });
+</script>
+
+
+</body>
+</html>
+               
